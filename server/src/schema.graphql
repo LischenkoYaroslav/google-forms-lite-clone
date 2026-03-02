@@ -9,7 +9,8 @@ type Question {
   id: ID!
   text: String!
   type: QuestionType!
-  options: [String]
+  required: Boolean!
+  options: [String!]!
 }
 
 enum QuestionType {
@@ -22,29 +23,32 @@ enum QuestionType {
 type Response {
   id: ID!
   formId: ID!
-  answers: [Answer!]!
+  form: Form!
+  answers: [Answer]!
 }
 
 type Answer {
   questionId: ID!
-  value: String!
+  question: Question!
+  value: String
 }
 
 input QuestionInput {
   text: String!
   type: QuestionType!
-  options: [String]
+  required: Boolean
+  options: [String!]
 }
 
 input AnswerInput {
   questionId: ID!
-  value: String!
+  value: String
 }
 
 type Query {
-  forms: [Form!]!
+  forms: [Form!]
   form(id: ID!): Form
-  responses(formId: ID!): [Response!]!
+  responses(formId: ID!): [Response!]
 }
 
 type Mutation {
@@ -54,5 +58,5 @@ type Mutation {
     questions: [QuestionInput]
   ): Form!
 
-  submitResponse(formId: ID!, answers: [AnswerInput]): Response!
+  submitResponse(formId: ID!, answers: [AnswerInput]!): Response!
 }
