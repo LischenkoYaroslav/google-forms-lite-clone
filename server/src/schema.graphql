@@ -7,6 +7,7 @@ type Form {
 
 type Question {
   id: ID!
+  formId: ID!
   text: String!
   type: QuestionType!
   required: Boolean!
@@ -24,10 +25,12 @@ type Response {
   id: ID!
   formId: ID!
   form: Form!
-  answers: [Answer]!
+  answers: [Answer!]!
 }
 
 type Answer {
+  id: ID!
+  responseId: ID!
   questionId: ID!
   question: Question!
   value: String

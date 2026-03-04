@@ -1,10 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
-import {
-  Resolvers,
-  Form,
-  Question,
-  Response,
-} from "../../generated/graphql.js";
+import { Resolvers, Form, Question, Response } from "./generated/graphql.js";
 import { forms, responses, questions, answers } from "./store.js";
 
 export const resolvers: Resolvers = {

@@ -1,11 +1,14 @@
-import { Form, Question, Response, Answer } from "../../generated/graphql.js";
+import { Form, Question, Response, Answer } from "./generated/graphql.js";
+import {
+  mockForms,
+  mockQuestions,
+  mockAnswers,
+  mockResponses,
+} from "./mocks.js";
 
-export const forms: Form[] = [];
-export const questions: (Question & { formId: string })[] = [];
+export const forms: Form[] = [...mockForms];
+export const questions: Question[] = [...mockQuestions];
 
-export const responses: Response[] = [];
+export const responses: Response[] = [...mockResponses];
 
-export const answers: (Answer & {
-  id: string;
-  responseId: string;
-})[] = [];
+export const answers: Answer[] = [...mockAnswers];

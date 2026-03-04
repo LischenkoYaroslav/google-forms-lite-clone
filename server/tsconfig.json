@@ -2,8 +2,7 @@
   "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "outDir": "dist",
-    "baseUrl": ".."
+    "baseUrl": "."
   },
-  "references": [{ "path": "../generated" }],
-  "include": ["src"]
+  "include": ["src", "generated"]
 }

@@ -18,8 +18,10 @@ export type Scalars = {
 
 export type Answer = {
   __typename?: 'Answer';
+  id: Scalars['ID']['output'];
   question: Question;
   questionId: Scalars['ID']['output'];
+  responseId: Scalars['ID']['output'];
   value?: Maybe<Scalars['String']['output']>;
 };
 
@@ -74,6 +76,7 @@ export type QueryResponsesArgs = {
 
 export type Question = {
   __typename?: 'Question';
+  formId: Scalars['ID']['output'];
   id: Scalars['ID']['output'];
   options: Array<Scalars['String']['output']>;
   required: Scalars['Boolean']['output'];
@@ -96,7 +99,7 @@ export type QuestionType =
 
 export type Response = {
   __typename?: 'Response';
-  answers: Array<Maybe<Answer>>;
+  answers: Array<Answer>;
   form: Form;
   formId: Scalars['ID']['output'];
   id: Scalars['ID']['output'];
@@ -206,8 +209,10 @@ export type ResolversParentTypes = ResolversObject<{
 }>;
 
 export type AnswerResolvers<ContextType = any, ParentType extends ResolversParentTypes['Answer'] = ResolversParentTypes['Answer']> = ResolversObject<{
+  id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   question?: Resolver<ResolversTypes['Question'], ParentType, ContextType>;
   questionId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
+  responseId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
 }>;
 
@@ -230,6 +235,7 @@ export type QueryResolvers<ContextType = any, ParentType extends ResolversParent
 }>;
 
 export type QuestionResolvers<ContextType = any, ParentType extends ResolversParentTypes['Question'] = ResolversParentTypes['Question']> = ResolversObject<{
+  formId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   options?: Resolver<Array<ResolversTypes['String']>, ParentType, ContextType>;
   required?: Resolver<ResolversTypes['Boolean'], ParentType, ContextType>;
@@ -238,7 +244,7 @@ export type QuestionResolvers<ContextType = any, ParentType extends ResolversPar
 }>;
 
 export type ResponseResolvers<ContextType = any, ParentType extends ResolversParentTypes['Response'] = ResolversParentTypes['Response']> = ResolversObject<{
-  answers?: Resolver<Array<Maybe<ResolversTypes['Answer']>>, ParentType, ContextType>;
+  answers?: Resolver<Array<ResolversTypes['Answer']>, ParentType, ContextType>;
   form?: Resolver<ResolversTypes['Form'], ParentType, ContextType>;
   formId?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
   id?: Resolver<ResolversTypes['ID'], ParentType, ContextType>;
